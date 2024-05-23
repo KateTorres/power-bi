@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power BI Dashboard that displays an example of financial results from 2 stores</title>
+  <style>
+    #icon {
+      width: 20px; /* Small icon width */
+      height: auto; /* Maintain aspect ratio */
+      cursor: pointer; /* Indicates clickable */
+    }
+    #pdf-viewer {
+      width: 100%; /* Full width of container */
+      height: 900px; /* Sufficient height for viewing */
+      display: none; /* Hidden by default */
+      border: 1px solid #ccc; /* Adds a border around the PDF viewer */
+    }
+  </style>
+</head>
+<body>
+  <h1>Sales Overview in Power BI</h1>
+    <!-- Link to the Power BI Dashboard - Replace 'YOUR_POWER_BI_LINK_HERE' with your actual Power BI URL -->
+    <p>
+      Open in Power BI software
+      <a href="power_bi_financial_dashboard_example.pbix" target="_blank">
+      <img id="icon" src="images/icon_power_bi.png" alt="Open Power BI"></a>
+  </p>
+
+  <p>
+    View as PDF Report
+    <img id="icon" src="images/icon_pdf.png" alt="Open PDF" onclick="openPDF()"> 
+  </p>
+
+  <!-- Placeholder for embedding PDF -->
+  <div id="pdf-viewer"></div>
+
+  <script>
+    function openPDF() {
+      var pdfViewer = document.getElementById('pdf-viewer');
+      var pdfPath = 'power_bi_financial_dashboard_example.pdf';
+
+      // Check if the viewer is already opened
+      if (pdfViewer.style.display === 'block') {
+        pdfViewer.style.display = 'none'; // Toggle off if clicked again
+      } else {
+        pdfViewer.innerHTML = `<object type="application/pdf" data="${pdfPath}" width="100%" height="500px">
+                                Sorry, your browser does not support PDFs. Please download the PDF to view it: <a href="${pdfPath}">Download PDF</a>
+                               </object>`;
+        pdfViewer.style.display = 'block'; // Display the viewer
+      }
+    }
+  </script>
+</body>
+</html>
